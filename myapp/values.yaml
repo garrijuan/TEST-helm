@@ -1,0 +1,42 @@
+ingress:
+  enabled: true
+  hostEnabled: false
+  host: www.mastercloudapps.com
+
+toposervice:
+  serviceType: NodePort
+  image:
+    name: mastercloudapps/toposervice
+    version: v1.23
+
+weatherservice:
+  image:
+    name: mastercloudapps/weatherservice
+    version: v1.23
+
+server:
+  serviceType: NodePort
+  image:
+    name: mastercloudapps/server
+    version: v2.23
+
+planner:
+  image:
+    name: mastercloudapps/planner
+    version: v1.23
+
+mongodb:
+  image:
+    name: mongo
+    version: 5.0-focal
+
+mysql:
+  image:
+    name: mysql
+    version: 8.0
+
+rabbitmq:
+  image:
+    name: rabbitmq
+    version: 3.11-management
+

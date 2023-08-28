@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: serverservice
+  labels:
+    app: serverservice
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: serverservice-port
+  selector:
+    app: serverservice
+  {{ if .Values.ingress.enabled }}    
+  type: {{ .Values.server.serviceType }}
+  {{ else }}
+  type: NodePort
+  {{ end }}

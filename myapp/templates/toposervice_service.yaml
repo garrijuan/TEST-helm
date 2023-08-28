@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: toposervice
+  labels:
+    app: toposervice
+spec:
+  ports:
+    - port: 8181
+      targetPort: 8181
+      protocol: TCP
+      name: toposervice-port
+  selector:
+    app: toposervice
+  {{ if .Values.ingress.enabled }}
+  type: {{ .Values.toposervice.serviceType }}
+  {{ else }}
+  type: NodePort
+  {{ end }}
